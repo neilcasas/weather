@@ -1,5 +1,5 @@
 import "../scss/styles.scss";
 import { fetchWeatherData } from "./api";
 
-const weatherData = fetchWeatherData("Filly");
+const weatherData = fetchWeatherData("Laoag");
 console.log(weatherData);
