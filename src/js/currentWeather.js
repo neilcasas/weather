@@ -7,6 +7,7 @@ const currentWeatherComponent = (weatherData) => {
   const mainDiv = document.createElement("div");
   mainDiv.id = "current-weather-card";
   mainDiv.classList.add("card");
+  mainDiv.classList.add("text-center");
 
   mainDiv.innerHTML = `<div class="card-body">
     <div class="card-title"><h2>${location.name + ", " + location.country}</h2>
