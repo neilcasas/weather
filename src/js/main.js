@@ -1,5 +1,4 @@
 import "../scss/styles.scss";
-import { fetchWeatherData } from "./api";
+import {loadPage} from "./uicontroller";
 
-const weatherData = fetchWeatherData("Laoag");
-console.log(weatherData);
+loadPage('Laoag');
