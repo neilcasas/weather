@@ -28,13 +28,11 @@ const weekForecastComponent = (weatherData) => {
     forecastDiv.classList.add("mt-4");
     forecastDiv.innerHTML = `
             <div class="card">
-                <div class="card-title">
-                    <p>${forecastDay.date}</p>
-                </div>
                 <div class="card-body">
+                    <p>${forecastDay.date}</p>
+                    <p>${forecastDay.day.condition.text}</p>
                     <img src="${forecastDay.day.condition.icon}"/>
                     <h2>${forecastDay.day.avgtemp_c} C</h2>
-                    <p>${forecastDay.day.condition.text}</p>
                 </div>
             </div>`;
 
