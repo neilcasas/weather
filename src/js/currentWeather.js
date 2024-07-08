@@ -6,20 +6,39 @@ const currentWeatherComponent = (weatherData) => {
   // Div content
   const mainDiv = document.createElement("div");
   mainDiv.id = "current-weather-card";
-  mainDiv.classList.add("card");
   mainDiv.classList.add("text-center");
+  mainDiv.classList.add("mt-4");
 
-  mainDiv.innerHTML = `<div class="card-body">
-    <div class="card-title"><h2>${location.name + ", " + location.country}</h2>
-    </div>
-    <div class="card-text">
+  mainDiv.innerHTML = `
+    <h2>${location.name + ", " + location.country}</h2>
     <p>${currentWeather.condition.text}</p>
     <img src="${currentWeather.condition.icon}"/>
     <h1>${currentWeather.temp_c} C</h1>
-    <p>Wind: ${currentWeather.wind_kph} kph</p>
+    <div class="row d-flex justify-content-center">
+      <div class="col-auto">
+        <b>Humidity</b>
+      </div>
+      <div class="col-auto">
+        ${currentWeather.humidity}%
+      </div>
     </div>
+    <div class="row d-flex justify-content-center">
+      <div class="col-auto">
+        <b>Wind Speed</b>
+      </div>
+      <div class="col-auto">
+        ${currentWeather.wind_kph} kph
+      </div>
     </div>
-  `;
+    <div class="row d-flex justify-content-center">
+      <div class="col-auto">
+        <b>Heat Index</b>
+      </div>
+      <div class="col-auto">
+        ${currentWeather.heatindex_c} C
+      </div>
+    </div>
+    `;
 
   return mainDiv;
 };
