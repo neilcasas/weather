@@ -9,11 +9,15 @@ const currentWeatherComponent = (weatherData) => {
   mainDiv.classList.add("card");
 
   mainDiv.innerHTML = `<div class="card-body">
-  <div class="card-title">${location.name + ", " + location.country}
-  </div>
-
+    <div class="card-title"><h2>${location.name + ", " + location.country}</h2>
     </div>
-
+    <div class="card-text">
+    <p>${currentWeather.condition.text}</p>
+    <img src="${currentWeather.condition.icon}"/>
+    <h1>${currentWeather.temp_c} C</h1>
+    <p>Wind: ${currentWeather.wind_kph} kph</p>
+    </div>
+    </div>
   `;
 
   return mainDiv;
