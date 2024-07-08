@@ -2,9 +2,11 @@ const weekForecastComponent = (weatherData) => {
   // Create main div
   const mainDiv = document.createElement("div");
   mainDiv.classList.add("week-forecast");
+  mainDiv.classList.add("mt-4");
+  mainDiv.classList.add("w-100");
 
   // Add header
-  mainDiv.innerHTML = `<h2>Week Forecast</h2>
+  mainDiv.innerHTML = `<h2 class="text-center">Week Forecast</h2>
     <div class="row d-flex justify-content-center" id="week-forecast-container">
     </div>`;
 
@@ -14,19 +16,28 @@ const weekForecastComponent = (weatherData) => {
   const weekForecastContainer = mainDiv.querySelector(
     "#week-forecast-container"
   );
+  weekForecastContainer.setAttribute("class", "d-flex align-items-center");
 
   // Create element for each day
   for (let i = 1; i < forecastDayArray.length; i++) {
     const forecastDay = forecastDayArray[i];
     const forecastDiv = document.createElement("div");
+    forecastDiv.classList.add("col");
 
     forecastDiv.classList.add("text-center");
     forecastDiv.classList.add("mt-4");
     forecastDiv.innerHTML = `
-            <h2>${forecastDay.date}</h2>
-            <p>${forecastDay.day.condition.text}</p>
-            <img src="${forecastDay.day.condition.icon}"/>
-            <h1>${forecastDay.day.avgtemp_c} C</h1>`;
+            <div class="card">
+                <div class="card-title">
+                    <p>${forecastDay.date}</p>
+                </div>
+                <div class="card-body">
+                    <img src="${forecastDay.day.condition.icon}"/>
+                    <h2>${forecastDay.day.avgtemp_c} C</h2>
+                    <p>${forecastDay.day.condition.text}</p>
+                </div>
+            </div>`;
+
     weekForecastContainer.appendChild(forecastDiv);
   }
   return mainDiv;

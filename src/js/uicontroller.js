@@ -11,9 +11,11 @@ function loadPage(city) {
   fetchWeatherData(city).then((weatherData) => {
     console.log(weatherData);
     // Append current weather component
+    currentWeatherContainer.innerHTML = "";
     currentWeatherContainer.appendChild(currentWeatherComponent(weatherData));
 
     // Append weekly forecast component
+    forecastContainer.innerHTML = "";
     forecastContainer.appendChild(weekForecastComponent(weatherData));
   });
 
