@@ -1,15 +1,20 @@
 import { fetchWeatherData } from "./api";
 import { currentWeatherComponent } from "./currentWeather";
+import { weekForecastComponent } from "./forecast";
 
 function loadPage(city) {
   // Clear initial content
   clearWeatherContent();
 
   const currentWeatherContainer = document.querySelector(".current-weather");
+  const forecastContainer = document.querySelector(".forecast");
   fetchWeatherData(city).then((weatherData) => {
+    console.log(weatherData);
     // Append current weather component
     currentWeatherContainer.appendChild(currentWeatherComponent(weatherData));
-    console.log(weatherData);
+
+    // Append weekly forecast component
+    forecastContainer.appendChild(weekForecastComponent(weatherData));
   });
 
   // Prevent default form behavior
