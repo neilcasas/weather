@@ -6,6 +6,10 @@ function loadPage(city, isCelsius) {
   // Clear initial content
   clearWeatherContent();
 
+  // Show spinner div
+  const spinnerDiv = document.querySelector("#spinner-div");
+  spinnerDiv.classList.remove("d-none");
+
   const currentWeatherContainer = document.querySelector(".current-weather");
   const forecastContainer = document.querySelector(".forecast");
   const hourlyForecastMainContainer = document.querySelector(
@@ -32,6 +36,9 @@ function loadPage(city, isCelsius) {
       hourlyForecastMainContainer.appendChild(
         hourlyForecastComponent(weatherData, isCelsius)
       );
+
+      // Hide spinner div
+      spinnerDiv.classList.add("d-none");
     })
 
     // TODO: Implement error handling

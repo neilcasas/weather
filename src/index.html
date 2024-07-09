@@ -37,7 +37,7 @@
           </svg>
         </div>
       </nav>
-      <div class="container-md main-container position-relative">
+      <div class="container-md main-container">
         <div class="search">
           <form action="/" method="get" class="form-inline w-100">
             <input
@@ -59,13 +59,11 @@
           ></div>
           <div class="hourly-forecast-main"></div>
         </div>
-        <div
-          class="text-center position-absolute top-50 start-50 translate-middle"
-        >
+        <div class="text-center d-none" id="spinner-div">
           <div class="spinner-border text-primary mt-4" role="status">
             <span class="visually-hidden">Loading...</span>
           </div>
-          <div class="loader-text mt-2">Weather + radar = Wedar!</div>
+          <div class="mt-2 opacity-50">Weather + radar = Wedar!</div>
         </div>
       </div>
     </main>
