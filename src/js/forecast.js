@@ -62,7 +62,7 @@ const hourlyForecastComponent = (weatherData, isCelsius) => {
   // Create main div
   const mainDiv = document.createElement("div");
   mainDiv.classList.add("hourly-forecast");
-  mainDiv.classList.add("mt-4");
+  mainDiv.classList.add("my-4");
 
   // Add header
   mainDiv.innerHTML = `<h2 class="text-center">Hourly Forecast</h2>
@@ -87,9 +87,13 @@ const hourlyForecastComponent = (weatherData, isCelsius) => {
   );
   for (let i = low; i < high; i++) {
     if (i > 23) {
-      hourlyForecastContainer.appendChild(hourComponent(nextDay, i - 24, isCelsius));
+      hourlyForecastContainer.appendChild(
+        hourComponent(nextDay, i - 24, isCelsius)
+      );
     } else {
-      hourlyForecastContainer.appendChild(hourComponent(currentDay, i, isCelsius));
+      hourlyForecastContainer.appendChild(
+        hourComponent(currentDay, i, isCelsius)
+      );
     }
   }
   return mainDiv;
