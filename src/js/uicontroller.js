@@ -40,6 +40,8 @@ function loadPage(city, isCelsius) {
       // Hide spinner div
       spinnerDiv.classList.add("d-none");
     })
+    // TODO: Implement error handling
+    .catch(() => {})
 
     // TODO: Implement error handling
     .catch(() => console.log("error in request!"));
