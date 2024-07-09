@@ -26,7 +26,7 @@ const weekForecastComponent = (weatherData) => {
     const forecastDiv = document.createElement("div");
     forecastDiv.classList.add("col-lg-6");
     forecastDiv.classList.add("text-center");
-    forecastDiv.classList.add("mt-4");
+    forecastDiv.classList.add("mt-2");
 
     // Format forecast date
     const date = new Date(forecastDay.date);
@@ -62,7 +62,7 @@ const hourlyForecastComponent = (weatherData) => {
 
   // Add header
   mainDiv.innerHTML = `<h2 class="text-center">Hourly Forecast</h2>
-    <div class="row d-flex justify-content-center mt-4" id="hourly-forecast-container">
+    <div class="row d-flex justify-content-center mt-3" id="hourly-forecast-container">
     </div>`;
 
   // Get current hour
