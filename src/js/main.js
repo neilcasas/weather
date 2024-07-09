@@ -6,6 +6,37 @@ let appState = {
   isCelsius: true,
 };
 
+function updateAppState(newCity, newIsCelsius) {
+  appState.city = newCity !== undefined ? newCity : appState.city;
+  appState.isCelsius =
+    newIsCelsius !== undefined ? newIsCelsius : appState.isCelsius;
+  loadPage(appState.city, appState.isCelsius);
+}
+
+// Fetch data for city on click of search button
+const searchBtn = document.getElementById("search-btn");
+const searchInput = document.getElementById("search-input");
+searchBtn.addEventListener("click", () => {
+  const city = searchInput.value;
+  updateAppState(city, appState.isCelsius);
+});
+
+// Change temperature unit on click of temperature unit button
+const celsiusToggler = document.getElementById("c-toggle");
+const fahrenheitToggler = document.getElementById("f-toggle");
+
+celsiusToggler.addEventListener("click", () => {
+  updateAppState(appState.city, true);
+  fahrenheitToggler.classList.remove("active");
+  celsiusToggler.classList.add("active");
+});
+
+fahrenheitToggler.addEventListener("click", () => {
+  updateAppState(appState.city, false);
+  celsiusToggler.classList.remove("active");
+  fahrenheitToggler.classList.add("active");
+});
+
 // Change theme on click of theme button
 const themeToggleDiv = document.querySelector(".theme-toggle");
 themeToggleDiv.addEventListener("click", () => {
@@ -19,4 +50,4 @@ themeToggleDiv.addEventListener("click", () => {
   }
 });
 
-loadPage("London", true);
+loadPage(appState.city, appState.isCelsius); // Load page with default city and celsius setting
