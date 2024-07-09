@@ -9,6 +9,12 @@ const currentWeatherComponent = (weatherData, isCelsius) => {
   mainDiv.classList.add("text-center");
   mainDiv.classList.add("mt-4");
 
+  // Add city as meta data
+  mainDiv.setAttribute(
+    "data-location",
+    `${location.name}, ${location.country}`
+  );
+
   mainDiv.innerHTML = `
     <h2>${location.name + ", " + location.country}</h2>
     <p>${currentWeather.condition.text}</p>
