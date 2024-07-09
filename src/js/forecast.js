@@ -16,14 +16,13 @@ const weekForecastComponent = (weatherData) => {
   const weekForecastContainer = mainDiv.querySelector(
     "#week-forecast-container"
   );
-  weekForecastContainer.setAttribute("class", "d-flex align-items-center");
+  weekForecastContainer.setAttribute("class", "row d-flex align-items-center");
 
   // Create element for each day
   for (let i = 1; i < forecastDayArray.length; i++) {
     const forecastDay = forecastDayArray[i];
     const forecastDiv = document.createElement("div");
-    forecastDiv.classList.add("col");
-
+    forecastDiv.classList.add("col-lg-6");
     forecastDiv.classList.add("text-center");
     forecastDiv.classList.add("mt-4");
     forecastDiv.innerHTML = `
@@ -33,6 +32,14 @@ const weekForecastComponent = (weatherData) => {
                     <p>${forecastDay.day.condition.text}</p>
                     <img src="${forecastDay.day.condition.icon}"/>
                     <h2>${forecastDay.day.avgtemp_c} C</h2>
+                    <div class="row d-flex justify-content-center">
+                      <div class="col-auto">
+                        <b>Chance of Rain</b>
+                      </div>
+                      <div class="col-auto">
+                        ${forecastDay.day.daily_chance_of_rain}%
+                      </div>
+                    </div>
                 </div>
             </div>`;
 
