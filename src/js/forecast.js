@@ -1,6 +1,6 @@
 import { format } from "date-fns";
 
-const weekForecastComponent = (weatherData) => {
+const weekForecastComponent = (weatherData, isCelsius) => {
   // Create main div
   const mainDiv = document.createElement("div");
   mainDiv.classList.add("week-forecast");
@@ -37,7 +37,11 @@ const weekForecastComponent = (weatherData) => {
                     <p>${formattedDate}</p>
                     <p>${forecastDay.day.condition.text}</p>
                     <img src="${forecastDay.day.condition.icon}"/>
-                    <h2>${forecastDay.day.avgtemp_c} °C</h2>
+                    <h2>${
+                      isCelsius
+                        ? forecastDay.day.avgtemp_c + " °C"
+                        : forecastDay.day.avgtemp_f + " °F"
+                    }</h2>
                     <div class="row d-flex justify-content-center">
                       <div class="col-auto">
                         <b>Chance of Rain</b>
@@ -54,7 +58,7 @@ const weekForecastComponent = (weatherData) => {
   return mainDiv;
 };
 
-const hourlyForecastComponent = (weatherData) => {
+const hourlyForecastComponent = (weatherData, isCelsius) => {
   // Create main div
   const mainDiv = document.createElement("div");
   mainDiv.classList.add("hourly-forecast");
@@ -83,16 +87,16 @@ const hourlyForecastComponent = (weatherData) => {
   );
   for (let i = low; i < high; i++) {
     if (i > 23) {
-      hourlyForecastContainer.appendChild(hourComponent(nextDay, i - 24));
+      hourlyForecastContainer.appendChild(hourComponent(nextDay, i - 24, isCelsius));
     } else {
-      hourlyForecastContainer.appendChild(hourComponent(currentDay, i));
+      hourlyForecastContainer.appendChild(hourComponent(currentDay, i, isCelsius));
     }
   }
   return mainDiv;
 };
 
 // Create component for one hour forecast
-const hourComponent = (day, hourIndex) => {
+const hourComponent = (day, hourIndex, isCelsius) => {
   const mainDiv = document.createElement("div");
   mainDiv.classList.add(`hour-forecast-${hourIndex}`);
   mainDiv.classList.add("text-center");
@@ -104,7 +108,11 @@ const hourComponent = (day, hourIndex) => {
                 <div class="card-body">
                     <p>${displayHour}</p>
                     <img src="${day.hour[hourIndex].condition.icon}"/>
-                    <h6>${day.hour[hourIndex].temp_c} °C</h6>
+                    <h6>${
+                      isCelsius
+                        ? day.hour[hourIndex].temp_c + " °C"
+                        : day.hour[hourIndex].temp_f + " °F"
+                    }</h6>
                 </div>
             </div>`;
 
