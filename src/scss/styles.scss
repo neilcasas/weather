@@ -17,6 +17,12 @@
   align-items: center;
 }
 
+.theme-toggle,
+#c-toggle,
+#f-toggle {
+  cursor: pointer;
+}
+
 @media (max-width: 576px) {
   #search-btn {
     width: 100%;

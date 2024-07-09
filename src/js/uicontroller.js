@@ -11,27 +11,31 @@ function loadPage(city, isCelsius) {
   const hourlyForecastMainContainer = document.querySelector(
     ".hourly-forecast-main"
   );
+  // TODO: Add loading animation
+  fetchWeatherData(city)
+    .then((weatherData) => {
+      console.log(weatherData);
+      // Append current weather component
+      currentWeatherContainer.innerHTML = "";
+      currentWeatherContainer.appendChild(
+        currentWeatherComponent(weatherData, isCelsius)
+      );
 
-  fetchWeatherData(city).then((weatherData) => {
-    console.log(weatherData);
-    // Append current weather component
-    currentWeatherContainer.innerHTML = "";
-    currentWeatherContainer.appendChild(
-      currentWeatherComponent(weatherData, isCelsius)
-    );
+      // Append weekly forecast component
+      forecastContainer.innerHTML = "";
+      forecastContainer.appendChild(
+        weekForecastComponent(weatherData, isCelsius)
+      );
 
-    // Append weekly forecast component
-    forecastContainer.innerHTML = "";
-    forecastContainer.appendChild(
-      weekForecastComponent(weatherData, isCelsius)
-    );
+      // Append hourly forecast component
+      hourlyForecastMainContainer.innerHTML = "";
+      hourlyForecastMainContainer.appendChild(
+        hourlyForecastComponent(weatherData, isCelsius)
+      );
+    })
 
-    // Append hourly forecast component
-    hourlyForecastMainContainer.innerHTML = "";
-    hourlyForecastMainContainer.appendChild(
-      hourlyForecastComponent(weatherData, isCelsius)
-    );
-  });
+    // TODO: Implement error handling
+    .catch(() => console.log("error in request!"));
 
   // Prevent default form behavior
   document.querySelector("form").addEventListener("submit", (e) => {
