@@ -54,4 +54,54 @@ const weekForecastComponent = (weatherData) => {
   return mainDiv;
 };
 
+const hourlyForecastComponent = (weatherData) => {
+  // Create main div
+  const mainDiv = document.createElement("div");
+  mainDiv.classList.add("hourly-forecast");
+
+  // Add header
+  mainDiv.innerHTML = `<h2 class="text-center">Hourly Forecast</h2>
+    <div class="row d-flex justify-content-center" id="hourly-forecast-container">
+    </div>`;
+
+  // Get current hour
+  const currentDate = new Date();
+  const currentHour = currentDate.getHours();
+
+  // Get lower and upper bounds for the range of hours to display
+  const low = currentHour + 1;
+  const high = low + 7;
+
+  // Create forecast array
+  const currentDay = weatherData.forecast.forecastday[0];
+  const nextDay = weatherData.forecast.forecastday[1];
+
+  for (let i = low; i < high; i++) {}
+};
+
+// Create component for one hour forecast
+const hourComponent = (hourForecast, hour) => {
+  const mainDiv = document.createElement("div");
+  mainDiv.classList.add(`hour-forecast-${hour}`);
+  mainDiv.classList.add("text-center");
+
+  mainDiv.innerHTML = `
+            <div class="card">
+                <div class="card-body">
+                    <p>${formattedDate}</p>
+                    <p>${forecastDay.day.condition.text}</p>
+                    <img src="${forecastDay.day.condition.icon}"/>
+                    <h2>${forecastDay.day.avgtemp_c} C</h2>
+                    <div class="row d-flex justify-content-center">
+                      <div class="col-auto">
+                        <b>Chance of Rain</b>
+                      </div>
+                      <div class="col-auto">
+                        ${forecastDay.day.daily_chance_of_rain}%
+                      </div>
+                    </div>
+                </div>
+            </div>`;
+};
+
 export { weekForecastComponent };
