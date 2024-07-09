@@ -1,3 +1,5 @@
+import { format } from "date-fns";
+
 const weekForecastComponent = (weatherData) => {
   // Create main div
   const mainDiv = document.createElement("div");
@@ -25,10 +27,14 @@ const weekForecastComponent = (weatherData) => {
     forecastDiv.classList.add("col-lg-6");
     forecastDiv.classList.add("text-center");
     forecastDiv.classList.add("mt-4");
+
+    // Format forecast date
+    const date = new Date(forecastDay.date);
+    const formattedDate = format(date, "EEEE, MMMM d");
     forecastDiv.innerHTML = `
             <div class="card">
                 <div class="card-body">
-                    <p>${forecastDay.date}</p>
+                    <p>${formattedDate}</p>
                     <p>${forecastDay.day.condition.text}</p>
                     <img src="${forecastDay.day.condition.icon}"/>
                     <h2>${forecastDay.day.avgtemp_c} C</h2>
