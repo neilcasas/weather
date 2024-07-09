@@ -70,38 +70,43 @@ const hourlyForecastComponent = (weatherData) => {
 
   // Get lower and upper bounds for the range of hours to display
   const low = currentHour + 1;
-  const high = low + 7;
+  const high = low + 6;
 
   // Create forecast array
   const currentDay = weatherData.forecast.forecastday[0];
   const nextDay = weatherData.forecast.forecastday[1];
 
-  for (let i = low; i < high; i++) {}
+  // Append to hourly forecast container
+  const hourlyForecastContainer = mainDiv.querySelector(
+    "#hourly-forecast-container"
+  );
+  for (let i = low; i < high; i++) {
+    if (i > 23) {
+      hourlyForecastContainer.appendChild(hourComponent(nextDay, i - 24));
+    } else {
+      hourlyForecastContainer.appendChild(hourComponent(currentDay, i));
+    }
+  }
+  return mainDiv;
 };
 
 // Create component for one hour forecast
-const hourComponent = (hourForecast, hour) => {
+const hourComponent = (day, hourIndex) => {
   const mainDiv = document.createElement("div");
-  mainDiv.classList.add(`hour-forecast-${hour}`);
+  mainDiv.classList.add(`hour-forecast-${hourIndex}`);
   mainDiv.classList.add("text-center");
+  mainDiv.classList.add("col-md-2");
 
   mainDiv.innerHTML = `
             <div class="card">
                 <div class="card-body">
-                    <p>${formattedDate}</p>
-                    <p>${forecastDay.day.condition.text}</p>
-                    <img src="${forecastDay.day.condition.icon}"/>
-                    <h2>${forecastDay.day.avgtemp_c} C</h2>
-                    <div class="row d-flex justify-content-center">
-                      <div class="col-auto">
-                        <b>Chance of Rain</b>
-                      </div>
-                      <div class="col-auto">
-                        ${forecastDay.day.daily_chance_of_rain}%
-                      </div>
-                    </div>
+                    <p>${hourIndex} am</p>
+                    <img src="${day.hour[hourIndex].condition.icon}"/>
+                    <h6>${day.hour[hourIndex].temp_c} C</h2>
                 </div>
             </div>`;
+
+  return mainDiv;
 };
 
-export { weekForecastComponent };
+export { weekForecastComponent, hourlyForecastComponent };
