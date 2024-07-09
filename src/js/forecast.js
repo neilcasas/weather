@@ -58,10 +58,11 @@ const hourlyForecastComponent = (weatherData) => {
   // Create main div
   const mainDiv = document.createElement("div");
   mainDiv.classList.add("hourly-forecast");
+  mainDiv.classList.add("mt-4");
 
   // Add header
   mainDiv.innerHTML = `<h2 class="text-center">Hourly Forecast</h2>
-    <div class="row d-flex justify-content-center" id="hourly-forecast-container">
+    <div class="row d-flex justify-content-center mt-4" id="hourly-forecast-container">
     </div>`;
 
   // Get current hour
@@ -95,18 +96,31 @@ const hourComponent = (day, hourIndex) => {
   const mainDiv = document.createElement("div");
   mainDiv.classList.add(`hour-forecast-${hourIndex}`);
   mainDiv.classList.add("text-center");
-  mainDiv.classList.add("col-md-2");
+  mainDiv.classList.add("col-auto");
 
+  const displayHour = hourIndexToHour(hourIndex);
   mainDiv.innerHTML = `
-            <div class="card">
+            <div class="card mb-3">
                 <div class="card-body">
-                    <p>${hourIndex} am</p>
+                    <p>${displayHour}</p>
                     <img src="${day.hour[hourIndex].condition.icon}"/>
-                    <h6>${day.hour[hourIndex].temp_c} C</h2>
+                    <h6>${day.hour[hourIndex].temp_c} C</h6>
                 </div>
             </div>`;
 
   return mainDiv;
 };
+
+function hourIndexToHour(hourIndex) {
+  if (hourIndex === 0) {
+    return "12 am";
+  } else if (hourIndex === 12) {
+    return "12 pm";
+  } else if (hourIndex < 12) {
+    return `${hourIndex} am`;
+  } else {
+    return `${hourIndex - 12} pm`;
+  }
+}
 
 export { weekForecastComponent, hourlyForecastComponent };

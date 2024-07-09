@@ -8,7 +8,9 @@ function loadPage(city) {
 
   const currentWeatherContainer = document.querySelector(".current-weather");
   const forecastContainer = document.querySelector(".forecast");
-  const hourlyForecastDiv = document.querySelector(".hourly-forecast");
+  const hourlyForecastMainContainer = document.querySelector(
+    ".hourly-forecast-main"
+  );
 
   fetchWeatherData(city).then((weatherData) => {
     console.log(weatherData);
@@ -21,8 +23,10 @@ function loadPage(city) {
     forecastContainer.appendChild(weekForecastComponent(weatherData));
 
     // Append hourly forecast component
-    hourlyForecastDiv.innerHTML = "";
-    hourlyForecastDiv.appendChild(hourlyForecastComponent(weatherData));
+    hourlyForecastMainContainer.innerHTML = "";
+    hourlyForecastMainContainer.appendChild(
+      hourlyForecastComponent(weatherData)
+    );
   });
 
   // Prevent default form behavior
@@ -44,5 +48,9 @@ function clearWeatherContent() {
   currentWeatherDiv.innerHTML = "";
   const forecastDiv = document.querySelector(".forecast");
   forecastDiv.innerHTML = "";
+  const hourlyForecastMainContainer = document.querySelector(
+    ".hourly-forecast-main"
+  );
+  hourlyForecastMainContainer.innerHTML = "";
 }
 export { loadPage };
