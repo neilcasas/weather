@@ -37,7 +37,7 @@ const weekForecastComponent = (weatherData) => {
                     <p>${formattedDate}</p>
                     <p>${forecastDay.day.condition.text}</p>
                     <img src="${forecastDay.day.condition.icon}"/>
-                    <h2>${forecastDay.day.avgtemp_c} C</h2>
+                    <h2>${forecastDay.day.avgtemp_c} °C</h2>
                     <div class="row d-flex justify-content-center">
                       <div class="col-auto">
                         <b>Chance of Rain</b>
@@ -104,7 +104,7 @@ const hourComponent = (day, hourIndex) => {
                 <div class="card-body">
                     <p>${displayHour}</p>
                     <img src="${day.hour[hourIndex].condition.icon}"/>
-                    <h6>${day.hour[hourIndex].temp_c} C</h6>
+                    <h6>${day.hour[hourIndex].temp_c} °C</h6>
                 </div>
             </div>`;
 

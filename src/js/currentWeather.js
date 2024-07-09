@@ -13,7 +13,7 @@ const currentWeatherComponent = (weatherData) => {
     <h2>${location.name + ", " + location.country}</h2>
     <p>${currentWeather.condition.text}</p>
     <img src="${currentWeather.condition.icon}"/>
-    <h1>${currentWeather.temp_c} C</h1>
+    <h1>${currentWeather.temp_c} °C</h1>
     <div class="row d-flex justify-content-center">
       <div class="col-auto">
         <b>Humidity</b>
@@ -35,7 +35,7 @@ const currentWeatherComponent = (weatherData) => {
         <b>Heat Index</b>
       </div>
       <div class="col-auto">
-        ${currentWeather.heatindex_c} C
+        ${currentWeather.heatindex_c} °C
       </div>
     </div>
     `;
