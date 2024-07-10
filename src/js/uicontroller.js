@@ -51,6 +51,9 @@ function loadPage(city, isCelsius) {
       // Hide spinner div
       spinnerDiv.classList.add("d-none");
 
+      // Clear error msg container
+      errorContainer.innerHTML = "";
+
       // Create error div
       errorContainer.appendChild(errorComponent(error));
     });

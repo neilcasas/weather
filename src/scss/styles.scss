@@ -10,22 +10,33 @@ main {
   min-height: 100vh;
 }
 
-/* Upper content */
 .main-container {
   display: flex;
   flex-grow: 1;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
+
+.search {
+  margin-bottom: auto;
+}
+
+.error-msg-container,
+#spinner-div {
+  margin-bottom: auto;
+}
+
 .navbar {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 #website-header {
   margin-right: 2rem;
 }
+
 .theme-toggle,
 #c-toggle,
 #f-toggle {
@@ -41,6 +52,7 @@ main {
     width: 100%;
   }
 }
+
 footer {
   margin-top: auto;
 }
