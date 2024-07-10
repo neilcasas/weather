@@ -1,6 +1,7 @@
 import { fetchWeatherData } from "./api";
 import { currentWeatherComponent } from "./currentWeather";
 import { weekForecastComponent, hourlyForecastComponent } from "./forecast";
+import { errorComponent } from "./error";
 
 function loadPage(city, isCelsius) {
   // Clear initial content
@@ -15,7 +16,8 @@ function loadPage(city, isCelsius) {
   const hourlyForecastMainContainer = document.querySelector(
     ".hourly-forecast-main"
   );
-  // TODO: Add loading animation
+  const errorContainer = document.querySelector(".error-msg-container");
+
   fetchWeatherData(city)
     .then((weatherData) => {
       console.log(weatherData);
@@ -39,12 +41,19 @@ function loadPage(city, isCelsius) {
 
       // Hide spinner div
       spinnerDiv.classList.add("d-none");
+
+      // Clear error msg container
+      errorContainer.innerHTML = "";
     })
-    // TODO: Implement error handling
-    .catch(() => {})
 
     // TODO: Implement error handling
-    .catch(() => console.log("error in request!"));
+    .catch((error) => {
+      // Hide spinner div
+      spinnerDiv.classList.add("d-none");
+
+      // Create error div
+      errorContainer.appendChild(errorComponent(error));
+    });
 
   // Prevent default form behavior
   document.querySelector("form").addEventListener("submit", (e) => {

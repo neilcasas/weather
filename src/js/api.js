@@ -5,10 +5,14 @@ const fetchWeatherData = async (city) => {
     if (response.ok) {
       return await response.json();
     } else {
-      console.log(response);
+      // Extract error message from response body
+      const errorResponse = await response.json();
+      const errorMessage = errorResponse.error.message;
+      throw new Error(errorMessage || "Failed to fetch weather data");
     }
   } catch (error) {
-    console.log(error);
+    console.error("Error fetching weather data:", error.message);
+    throw error; // Re-throw the error if you want to handle it further up the call stack
   }
 };
 
