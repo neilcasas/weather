@@ -17,6 +17,7 @@ function loadPage(city, isCelsius) {
     ".hourly-forecast-main"
   );
   const errorContainer = document.querySelector(".error-msg-container");
+  errorContainer.innerHTML = ""; // Clear error message when loading
 
   fetchWeatherData(city)
     .then((weatherData) => {

@@ -12,7 +12,7 @@ const fetchWeatherData = async (city) => {
     }
   } catch (error) {
     console.error("Error fetching weather data:", error.message);
-    throw error; // Re-throw the error if you want to handle it further up the call stack
+    throw error;
   }
 };
 
